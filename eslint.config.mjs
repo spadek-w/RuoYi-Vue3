@@ -10,6 +10,10 @@ export default antfu(
         'vue/block-order': ['error', {
           order: ['template', 'script', 'style'],
         }],
+        'prefer-const': 'off', // 关闭 prefer-const 规则
+        'vue/eqeqeq': 'off',
+        'eqeqeq': 'off',
+        'vue/no-unused-refs': 'off',
       },
     },
     // formatters: true,

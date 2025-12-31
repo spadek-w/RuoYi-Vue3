@@ -33,14 +33,9 @@ module.exports = {
     // 开启 Prettier 自动格式化功能
     // 'prettier/prettier': true,
     // 屏蔽background-color: rgba(0, 0, 0, 0.5);这种写法引起的警告 start
-    'color-function-notation': 'legacy',
-    'color-function-alias-notation': 'with-alpha',
-    'alpha-value-notation': [
-      'number',
-      {
-        exceptProperties: ['opacity'], // 可选：对特定属性豁免规则
-      },
-    ],
+    'color-function-notation': null,
+    'color-function-alias-notation': null,
+    'alpha-value-notation': null,
     'selector-class-pattern': null,
     'keyframes-name-pattern': null,
     'property-no-unknown': null,

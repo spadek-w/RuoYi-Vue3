@@ -125,7 +125,7 @@ import logo from '@/assets/logo/logo.png'
 import Download from '@/plugins/download'
 import { formConf as formConfData, inputComponents, layoutComponents, selectComponents } from '@/utils/generator/config'
 import { makeUpCss } from '@/utils/generator/css'
-import drawingDefalut from '@/utils/generator/drawingDefalut'
+import { drawingDefaultValue, initDrawingDefaultValue, cleanDrawingDefaultValue } from '@/utils/generator/drawingDefault'
 import { cssStyle, makeUpHtml, vueScript, vueTemplate } from '@/utils/generator/html'
 import { makeUpJs } from '@/utils/generator/js'
 import { beautifierConf } from '@/utils/index'
@@ -133,14 +133,17 @@ import CodeTypeDialog from './CodeTypeDialog'
 import DraggableItem from './DraggableItem'
 import RightPanel from './RightPanel'
 
-const drawingList = ref(drawingDefalut)
+initDrawingDefaultValue()
+
+const drawingList = ref(drawingDefaultValue)
 const { proxy } = getCurrentInstance()
 const dialogVisible = ref(false)
 const showFileName = ref(false)
 const operationType = ref('')
 const idGlobal = ref(100)
-const activeData = ref(drawingDefalut[0])
-const activeId = ref(drawingDefalut[0].formId)
+const activeData = ref(drawingDefaultValue[0])
+const activeId = ref(drawingDefaultValue[0].formId)
+
 const generateConf = ref(null)
 const formData = ref({})
 const formConf = ref(formConfData)
@@ -165,6 +168,7 @@ function empty() {
   proxy.$modal.confirm('确定要清空所有组件吗？', '提示', { type: 'warning' }).then(() => {
     idGlobal.value = 100
     drawingList.value = []
+    cleanDrawingDefaultValue()
   },
   )
 }
@@ -315,8 +319,9 @@ watch(activeId, (val) => {
   oldActiveId = val
 }, { immediate: true })
 
+let clipboard = null
 onMounted(() => {
-  const clipboard = new ClipboardJS('#copyNode', {
+  clipboard = new ClipboardJS('#copyNode', {
     text: () => {
       const codeStr = generateCode()
       ElNotification({ title: '成功', message: '代码已复制到剪切板，可粘贴。', type: 'success' })
@@ -326,6 +331,9 @@ onMounted(() => {
   clipboard.on('error', () => {
     proxy.$modal.msgError('代码复制失败')
   })
+})
+onUnmounted(() => {
+  clipboard.destroy()
 })
 </script>
 

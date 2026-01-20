@@ -13,11 +13,15 @@ export default {
    * 是否系统布局配置
    */
   showSettings: true,
+  /**
+   * 菜单导航模式 1、纯左侧 2、混合（左侧+顶部） 3、纯顶部
+   */
+  navType: 1,
 
   /**
    * 是否显示顶部导航
    */
-  topNav: false,
+  // topNav: false,
 
   /**
    * 是否显示 tagsView

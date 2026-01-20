@@ -7,7 +7,7 @@ const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
 // eslint-disable-next-line max-len
-const { sideTheme, showSettings, topNav, tagsView, tagsIcon, fixedHeader, sidebarLogo, dynamicTitle, footerVisible, footerContent } = defaultSettings
+const { sideTheme, showSettings, navType, tagsView, tagsIcon, fixedHeader, sidebarLogo, dynamicTitle, footerVisible, footerContent } = defaultSettings
 
 const storageSetting = JSON.parse(localStorage.getItem('layout-setting')) || ''
 
@@ -19,7 +19,8 @@ const useSettingsStore = defineStore(
       theme: storageSetting.theme || '#145DFF',
       sideTheme: storageSetting.sideTheme || sideTheme,
       showSettings,
-      topNav: storageSetting.topNav === undefined ? topNav : storageSetting.topNav,
+      navType: storageSetting.navType === undefined ? navType : storageSetting.navType,
+      // topNav: storageSetting.topNav === undefined ? topNav : storageSetting.topNav,
       tagsView: storageSetting.tagsView === undefined ? tagsView : storageSetting.tagsView,
       tagsIcon: storageSetting.tagsIcon === undefined ? tagsIcon : storageSetting.tagsIcon,
       fixedHeader: storageSetting.fixedHeader === undefined ? fixedHeader : storageSetting.fixedHeader,

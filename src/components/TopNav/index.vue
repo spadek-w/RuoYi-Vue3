@@ -173,7 +173,7 @@ onMounted(() => {
   padding: 0 5px !important;
   margin: 0 10px !important;
   line-height: 50px !important;
-  color: #999093 !important;
+  color: #303133 !important;
 }
 
 .topmenu-container.el-menu--horizontal > .el-menu-item.is-active,
@@ -189,7 +189,7 @@ onMounted(() => {
   padding: 0 5px !important;
   margin: 0 10px !important;
   line-height: 50px !important;
-  color: #999093 !important;
+  color: #303133 !important;
 }
 
 /* 背景色隐藏 */

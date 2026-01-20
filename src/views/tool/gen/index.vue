@@ -264,7 +264,9 @@ function handleGenTable(row) {
     })
   }
   else {
-    proxy.$download.zip(`/tool/gen/batchGenCode?tables=${tbNames}`, 'ruoyi.zip')
+    // proxy.$download.zip(`/tool/gen/batchGenCode?tables=${tbNames}`, 'ruoyi.zip')
+    const zipName = Array.isArray(tbNames) ? "ruoyi.zip" : tbNames + ".zip"
+    proxy.$download.zip("/tool/gen/batchGenCode?tables=" + tbNames, zipName)
   }
 }
 
